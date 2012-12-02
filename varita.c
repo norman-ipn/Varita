@@ -9,6 +9,10 @@ int main(void)
 	//Conecta al PlayStation Move
 	PSMove *move;
 	move = psmove_connect();
+	if (!move)
+	{
+		printf("ERROR: No se ha podido establecer la conexión al PlayStation Move\n");
+	}
 
 	//Obtiene el dispositivo de visiòn (càmara)
 	CvSize size = cvSize(640, 480);
@@ -84,7 +88,10 @@ int main(void)
 	cvDestroyWindow("Juego Varita");	
 
 	//Cierra la conexión con el PlayStation Move
-	psmove_disconnect(move);
+	if(move)
+	{
+		psmove_disconnect(move);
+	}
 
 	return 0;
 }
