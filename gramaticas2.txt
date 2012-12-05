@@ -1,0 +1,35 @@
+Gramáticas parte 2:
+
+Sean A, B, C y D los cuadrantes en la pantalla.
+
+Para la L:
+
+S -> ACD
+A -> a
+A -> aA
+C -> c
+C -> cC
+D -> d
+D -> dD
+
+Para la L inversa:
+
+S -> ABD
+A -> a
+A -> aA
+B -> b
+B -> bB
+D -> d
+D -> dD
+
+Para el escalón:
+
+S -> CABD
+A -> a
+A -> aA
+B -> b
+B -> bB
+C -> c
+C -> cC
+D -> d
+D -> dD
