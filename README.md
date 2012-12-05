@@ -5,5 +5,6 @@ Juego de Varita
 
 # Objetivo:
 
-Producir un juego que detecte el movimiento de un control de consola Play Station para efectuar un ataque.
+Crear  un juego que detecte el movimiento de un control de consola Play Station mediante la herramienta OpenCV 
+para efectuar diferentes ataques modelados mediante gramáticas.
 
