@@ -1,4 +1,4 @@
-Gramáticas parte 2:
+Gramáticas parte 3:
 
 Sean A, B, C y D los cuadrantes en la pantalla.
 
@@ -22,14 +22,10 @@ A -> aA
 C -> c
 C -> cC
 
-Para el escalón:
+Para la línea verticla (lado derecho):
 
-S -> CABD
-A -> a
-A -> aA
+S -> BD
 B -> b
 B -> bB
-C -> c
-C -> cC
 D -> d
 D -> dD
