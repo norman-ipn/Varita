@@ -1,0 +1,31 @@
+Gramáticas parte 4:
+
+Sean A, B, C y D los cuadrantes en la pantalla.
+
+Para la L reflejada horizontalmente:
+
+S -> CDB
+B -> b
+B -> bB
+C -> c
+C -> cC
+D -> d
+D -> dD
+
+Para la L reflejada verticalmente:
+
+S -> BAC
+A -> a
+A -> aA
+B -> b
+B -> bB
+C -> c
+C -> cC
+
+Para la línea horizontal:
+
+S -> AB
+A -> a
+A -> aA
+B -> b
+B -> bB
