@@ -1,0 +1,39 @@
+Gramáticas:
+
+Sean A, B, C y D los cuadrantes en la pantalla.
+
+Para el círculo:
+
+S -> ABDCA
+A -> a
+A -> aA
+B -> b
+B -> bB
+C -> c
+C -> cC
+D -> d
+D -> dD
+
+Para media luna:
+
+S -> BACD
+A -> a
+A -> aA
+B -> b
+B -> bB
+C -> c
+C -> cC
+D -> d
+D -> dD
+
+Para media luna inversa:
+
+S -> ABDC
+A -> a
+A -> aA
+B -> b
+B -> bB
+C -> c
+C -> cC
+D -> d
+D -> dD
