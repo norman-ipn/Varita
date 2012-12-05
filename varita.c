@@ -7,7 +7,7 @@
 int main(void)
 {
 	//Conecta al PlayStation Move
-	PSMove *move;
+	PSMove *move = NULL; //<< siempre inicialicen sus variables.
 	move = psmove_connect();
 	if (!move)
 	{
