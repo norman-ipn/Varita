@@ -1,4 +1,4 @@
-Gramáticas parte 4:
+    Gramáticas parte 4:
 
 Sean A, B, C y D los cuadrantes establecidos en la pantalla.
 [Convención de acuerdo al sentido contrario de las manecillas de reloj (como en plano cartesiano) estableciendo los cuadrantes
