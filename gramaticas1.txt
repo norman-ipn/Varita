@@ -4,7 +4,7 @@ Sean A, B, C y D los cuadrantes en la pantalla.
 
 Gramática para el círculo:
 
-S -> ABDCA
+S ->ABDCA
 A -> a
 A -> aA
 B -> b
