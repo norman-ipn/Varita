@@ -24,6 +24,9 @@ E: A B STOP { printf("Línea horizontal"); }
 E: A C D B STOP { printf("U"); }
 E: A C STOP { printf("Linea vertical (Lado izq)"); }
 E: C A B D STOP { printf("Escalón"); }
+E: A C D STOP { printf ("L (normal)"); }
+E: A B D STOP { printf ("L inversa");}
+E: B D STOP { printf("Línea vertial (lado derecho"); }
 
 A: a A | a
 B: b B | b
