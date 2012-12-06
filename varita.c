@@ -3,12 +3,18 @@
 #include "opencv/cv.h"
 #include "opencv/highgui.h"
 #include "psmoveapi/psmove.h"
+#include "buffer.h"
 
 int main(void)
 {
 	//Conecta al PlayStation Move
-	PSMove *move = NULL; //<< siempre inicialicen sus variables.
+	PSMove *move = NULL;
 	move = psmove_connect();
+
+	//El arreglo donde se almacenarán los cuadrantes por donde se ha pasado.
+	char cuadrantes[20];
+	limpiarBuffer(cuadrantes); //Se inicializa el arreglo.
+
 	if (!move)
 	{
 		printf("ERROR: No se ha podido establecer la conexión al PlayStation Move\n");
@@ -102,10 +108,10 @@ int main(void)
 				cvRectangle(frame, cvPoint(320, 240), cvPoint(640, 480), CV_RGB(0, 255, 0), -1, 8, 0);
 			}
 
-			printf("%c\n", cuadrante);
+			agregarBuffer(cuadrante); //Agrega el caracter al buffer para su lectura.
 		}
 
-		//printf("%c", cuadrante);
+		imprimirBuffer(cuadrantes); //Imprime los cuadrantes que se han ingresado hasta este momento.
 
 		//Muestra el siguiente cuadro
 		cvShowImage("Juego Varita", frame);
