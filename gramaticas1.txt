@@ -2,7 +2,7 @@ Gramáticas:
 
 Sean A, B, C y D los cuadrantes en la pantalla.
 
-Para el círculo:
+Gramática para el círculo:
 
 S -> ABDCA
 A -> a
@@ -14,7 +14,7 @@ C -> cC
 D -> d
 D -> dD
 
-Para media luna:
+Gramática para el luna:
 
 S -> BACD
 A -> a
@@ -26,7 +26,7 @@ C -> cC
 D -> d
 D -> dD
 
-Para media luna inversa:
+Gramática para el luna inversa :
 
 S -> ABDC
 A -> a
