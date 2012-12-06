@@ -21,7 +21,8 @@ La forma para realizar este proyecto es el siguiente:
 
 #Desarrollo:
 
-Primeramente se deberán instalar tanto las librerías OpenCV como PSMoveAPI (Instrucciones próximas a mostrarse).
+Primeramente se deberán instalar tanto las librerías OpenCV como PSMoveAPI 
+(Las instrucciones para instalar OpenCV  se encuentran en el archivo OpenCV.odt y las instrucciones para PSMoveApi en el archivo PSMoveAPI.odt).
 
 Posteriormente se deberá mostrar una ventana y con ayuda de un ciclo infinito mostraremos las capturas de la cámara web. Justo en este proceso deberemos hacer uso de la librería PSMoveAPI para poder mostrar un color predefinido y así facilitar la detección de la "varita".
 
