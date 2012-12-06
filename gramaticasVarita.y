@@ -18,6 +18,9 @@ int yyerror(const char *p) { printf("Error"); }
 
 %%
 run: | run E | run error   /* forces bison to process many stmts */
+E: C D B STOP { printf("L reflejada horizontalmente"); }
+E: B A C STOP { printf("L reflejada verticalmente"); }
+E: A B STOP { printf("Línea horizontal"); }
 E: A C D B STOP { printf("U"); }
 E: A C STOP { printf("Linea vertical (Lado izq)"); }
 E: C A B D STOP { printf("Escalón"); }
