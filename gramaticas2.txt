@@ -5,31 +5,31 @@ Sean A, B, C y D los cuadrantes en la pantalla.
 Para la U:
 
 S -> ACDB
-A -> a
 A -> aA
-B -> b
+A -> a
 B -> bB
-C -> c
+B -> b
 C -> cC
-D -> d
+C -> c
 D -> dD
+D -> d
 
 Para la lìnea vertical (lado izquierdo):
 
 S -> AC
-A -> a
 A -> aA
-C -> c
+A -> a
 C -> cC
+C -> c
 
-Para el escalón:
+Para el escalón ó n:
 
 S -> CABD
-A -> a
 A -> aA
-B -> b
+A -> a
 B -> bB
-C -> c
+B -> b
 C -> cC
-D -> d
+C -> c
 D -> dD
+D -> d
