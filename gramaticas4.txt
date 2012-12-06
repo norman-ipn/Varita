@@ -1,26 +1,36 @@
 Gramáticas parte 4:
 
-Sean A, B, C y D los cuadrantes en la pantalla.
+Sean A, B, C y D los cuadrantes establecidos en la pantalla.
+[Convención de acuerdo al sentido contrario de las manecillas de reloj (como en plano cartesiano) estableciendo los cuadrantes
+B = 1
+A = 2
+C = 3 
+D = 4
+
+A   | B
+--------
+C   | D
+]
 
 Para la L reflejada horizontalmente:
 
 S -> CDB
-B -> b
 B -> bB
-C -> c
+B -> b
 C -> cC
-D -> d
+C -> c
 D -> dD
+D -> d
 
 Para la L reflejada verticalmente:
 
 S -> BAC
-A -> a
 A -> aA
-B -> b
+A -> a
 B -> bB
-C -> c
+B -> b
 C -> cC
+C -> c
 
 Para la línea horizontal:
 
