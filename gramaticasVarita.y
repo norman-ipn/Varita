@@ -27,6 +27,11 @@ int yyerror(const char *p) { printf("Error"); }
 run: 
   | run E 
   | run error
+E: A B D C A STOP { printf("Circulo"); }
+
+E: B A C D STOP   { printf("Media Luna"); }
+
+E: A B D C STOP   { printf("Media Luna invertida"); }
 
 E: C D B STOP { printf("L reflejada horizontalmente"); }
 
