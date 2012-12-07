@@ -33,51 +33,51 @@ int yyerror(const char *p) {  } // Aqui se van a registrar errores, pero no se h
 run: 
   | run E 
   | run error
-E: A B D C A STOP {  printf("Circulo"); 
+E: A B D C A STOP {  ataque("circulo"); 
 	             limpiaBuffer(cuadrantes);
 	          }
 
-E: B A C D STOP   { printf("Media Luna"); 
+E: B A C D STOP   { ataque("md"); 
 		    limpiaBuffer(cuadrantes); 
 		  }
 
-E: A B D C STOP   { printf("Media Luna invertida"); 
+E: A B D C STOP   { ataque("mdi"); 
 		    limpiaBuffer(cuadrantes);
 		  }
 
-E: C D B STOP { printf("L reflejada horizontalmente"); 
+E: C D B STOP { ataque("lrh"); 
 		limpiaBuffer(cuadrantes); 
 	      }
 
-E: B A C STOP { printf("L reflejada verticalmente");  
+E: B A C STOP { ataque("lrv");  
 		limpiaBuffer(cuadrantes); 
 	      }
 
-E: A B STOP { printf("Línea horizontal"); 
+E: A B STOP { ataque("lh"); 
 	      limpiaBuffer(cuadrantes);
             }
 
-E: A C D B STOP { printf("U");
+E: A C D B STOP { ataque("u");
 	          limpiaBuffer(cuadrantes); 
 		}
 
-E: A C STOP { printf("Linea vertical (Lado izq)"); 
+E: A C STOP { ataque("lvizq")); 
 	      limpiaBuffer(cuadrantes); 
 	    }
 
-E: C A B D STOP { printf("Escalón"); 
+E: C A B D STOP { ataque("escalon"); 
 		  limpiaBuffer(cuadrantes); 
 	        }
 
-E: A C D STOP { printf ("L (normal)"); 
+E: A C D STOP { ataque("l"); 
 		limpiaBuffer(cuadrantes); 
               }
 
-E: A B D STOP { printf ("L inversa"); 
+E: A B D STOP { ataque("linversa"); 
 		limpiaBuffer(cuadrantes); 
 	      }
 
-E: B D STOP { printf("Línea vertial (lado derecho"); 
+E: B D STOP { ataque("lvder"); 
 	      limpiaBuffer(cuadrantes); 
 	    }
 
@@ -116,6 +116,73 @@ int yylex(){
 						{
 						return STOP;
 						}
+	}
+}
+
+
+void dibujaTexto(char texto[]) {
+	CvFont font;
+	CvPoint pt1;
+	cvInitFont( &font, CV_FONT_VECTOR0, 0.5, 0.5, 0, 2.0, CV_AA);
+
+	pt1.x = 150;
+	pt1.y = 150;
+
+	if(!(strcmp(texto, "u"){
+		cvPutText(frame, "Ataque U", pt1, &font,CV_RGB(99,170,251) );
+	}
+
+	if(!(strcmp(texto, "circulo"){
+		cvPutText(frame, "Ataque circulo", pt1, &font,CV_RGB(99,170,251) );
+	}
+
+	if(!(strcmp(texto, "escalon"){
+		cvPutText(frame, "Ataque Escalon", pt1, &font,CV_RGB(99,170,251) );
+	}
+
+	if(!(strcmp(texto, "ml"){
+		cvPutText(frame, "Ataque media luna", pt1, &font,CV_RGB(99,170,251) );
+	}
+
+	if(!(strcmp(texto, "mli"){
+		cvPutText(frame, "Ataque media luna invertida", pt1, &font,CV_RGB(99,170,251) );a
+	}
+
+	if(!(strcmp(texto, "lrh"){
+		cvPutText(frame, "Ataque L reflejada horizontal", pt1, &font,CV_RGB(99,170,251) );
+	}
+
+	if(!(strcmp(texto, "lrv"){
+		cvPutText(frame, "Ataque L reflejada vertical", pt1, &font,CV_RGB(99,170,251) );
+	}
+
+	if(!(strcmp(texto, "lh"){
+		cvPutText(frame, "Ataque linea horizontal", pt1, &font,CV_RGB(99,170,251) );
+	}
+
+	if(!(strcmp(texto, "lvizq"){
+		cvPutText(frame, "Ataque linea vertical izquierda", pt1, &font,CV_RGB(99,170,251) );
+	}
+
+	if(!(strcmp(texto, "lvder"){
+		cvPutText(frame, "Ataque linea vertical derecha", pt1, &font,CV_RGB(99,170,251) );
+	}
+
+	if(!(strcmp(texto, "l"){
+		cvPutText(frame, "Ataque L", pt1, &font,CV_RGB(99,170,251) );
+	}	
+
+	if(!(strcmp(texto, "linversa"){
+		cvPutText(frame, "Ataque L inversa", pt1, &font,CV_RGB(99,170,251) );
+	}
+}
+
+void ataque(texto []){
+int count=0;
+
+	while(count<10000){
+       		dibujaTexto(texto);
+       		count=count++;
 	}
 }
 
