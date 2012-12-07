@@ -6,6 +6,8 @@
 #include "psmoveapi/psmove.h"
 #include "buffer.h"
 
+//El arreglo donde se almacenarán los cuadrantes por donde se ha pasado.
+char cuadrantes[20];
 int yylex(); 
 int yyerror(const char *p) { printf("Error"); }
 %}
@@ -68,26 +70,28 @@ D: d D
 //FUNCTION DEFINITIONS
 int yylex(){
   char chaR;
-	while(1){
-	scanf("%c",&chaR);
-	yylval.sym = chaR;
-	
-	if(chaR == 'A'){
-	return a;
-	}
-	else if(chaR == 'B'){
-	return b;
-	}
-	else if(chaR == 'C'){
-	return c;
-	}
-	else if(chaR == 'D'){
-	return d;
-	}
-	else if(chaR == ';'){
-	return STOP;
-	}
 
+	int i=0;
+
+	for(i=0;cuadrantes[i]!= '\0' ;i++)
+	{
+		chaR=cuadrantes[i];
+		if(chaR == 'A')
+		{
+			return a;
+		} else if(chaR == 'B')
+			{
+			return b;
+			} else if(chaR == 'C')
+				{
+				return c;
+				}else if(chaR == 'D')
+					{
+					return d;
+					}else if(chaR == ';')
+						{
+						return STOP;
+						}
 	}
 }
 
@@ -97,8 +101,7 @@ int main(void)
 	PSMove *move = NULL;
 	move = psmove_connect();
 
-	//El arreglo donde se almacenarán los cuadrantes por donde se ha pasado.
-	char cuadrantes[20];
+
 	limpiarBuffer(cuadrantes); //Se inicializa el arreglo.
 
 	if (!move)
