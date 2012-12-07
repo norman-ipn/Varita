@@ -8,7 +8,7 @@ int yyerror(const char *p) { printf("Error"); }
 
 //SYMBOL SEMANTIC VALUES
 %union {
-  char sym='';
+  char sym;
 };
 %token <sym> a
 %token <sym> b
