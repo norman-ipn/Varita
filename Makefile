@@ -3,14 +3,14 @@ all: run
 run: varita
 	./varita
 
-varita: gramaticasVarita.tab.c buffer.o
-	gcc gramaticasVarita.tab.c buffer.o -lpsmoveapi -lopencv_core -lopencv_imgproc -lopencv_highgui -lopencv_objdetect -o varita
+varita: lex.yy.c buffer.o
+	gcc lex.yy.c buffer.o -lpsmoveapi -lopencv_core -lopencv_imgproc -lopencv_highgui -lopencv_objdetect -o varita -ll
 
-gramaticasVarita.tab.c: gramaticasVarita.y
-	bison gramaticasVarita.y
+lex.yy.c: varita.l
+	flex varita.l
 
 buffer.o: buffer.c
 	gcc -c buffer.c
 
 clean:
-	rm varita buffer.o gramaticasVarita.tab.c
+	rm varita buffer.o lex.yy.c

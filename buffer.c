@@ -7,13 +7,13 @@ void agregarBuffer(char elemento, char arreglo[])
 	{
 	}
 
-	if (i <= 9)
+	if (i <= 19)
 	{
 		arreglo[i] = elemento;
 	}
 	else
 	{
-		for (i = 0; i < 9; i++)
+		for (i = 0; i < 19; i++)
 		{
 			arreglo[i] = arreglo[i + 1];
 		}
@@ -25,7 +25,7 @@ void agregarBuffer(char elemento, char arreglo[])
 void limpiarBuffer(char arreglo[])
 {
 	int i = 0;
-	for (i = 0; i <= 9; i++)
+	for (i = 0; i <= 19; i++)
 	{
 		arreglo[i] = '\0';
 	}
@@ -34,7 +34,7 @@ void limpiarBuffer(char arreglo[])
 void imprimirBuffer(char arreglo[])
 {
 	int i = 0;
-	for (i = 0; i <= 9; i++)
+	for (i = 0; i <= 19; i++)
 	{
 		printf("%c", arreglo[i]);
 	}

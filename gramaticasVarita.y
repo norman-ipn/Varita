@@ -7,11 +7,11 @@
 #include "buffer.h"
 
 //El arreglo donde se almacenarán los cuadrantes por donde se ha pasado.
-char cuadrantes[20];
+char cuadrantes[10];
 int t = 0;
 IplImage *frame;
 int yylex(); 
-int yyerror(const char *p) {  } // Aqui se van a registrar errores, pero no se harán acciones.
+int yyerror(const char *p) { printf("Error");} // Aqui se van a registrar errores, pero no se harán acciones.
 %}
 
 //SYMBOL SEMANTIC VALUES
@@ -35,54 +35,54 @@ int yyerror(const char *p) {  } // Aqui se van a registrar errores, pero no se h
 run: 
   | run E 
   | run error
-E: A B D C A STOP {  
-			printf("Ataque");//ataque("circulo"); 
+E: A STOP {  
+			printf("Ataque"); //ataque("circulo"); 
 	             	//limpiarBuffer(cuadrantes);
 	          }
 
-E: B A C D STOP   { printf("Ataque");//ataque("md"); 
+/*E: B A C D STOP   { printf("Ataque"); return;//ataque("md"); 
 		    //limpiarBuffer(cuadrantes); 
 		  }
 
-E: A B D C STOP   { printf("Ataque");//ataque("mdi"); 
+E: A B D C STOP   { printf("Ataque"); return;//ataque("mdi"); 
 		    //limpiarBuffer(cuadrantes);
 		  }
 
-E: C D B STOP { printf("Ataque");//ataque("lrh"); 
+E: C D B STOP { printf("Ataque"); return;//ataque("lrh"); 
 		//limpiarBuffer(cuadrantes); 
 	      }
 
-E: B A C STOP { printf("Ataque");//ataque("lrv");  
+E: B A C STOP { printf("Ataque"); return;//ataque("lrv");  
 		//limpiarBuffer(cuadrantes); 
 	      }
 
-E: A B STOP { printf("Ataque");//ataque("lh"); 
+E: A B STOP { printf("Ataque"); return;//ataque("lh"); 
 	      //limpiarBuffer(cuadrantes);
             }
 
-E: A C D B STOP { printf("Ataque");//ataque("u");
+E: A C D B STOP { printf("Ataque"); return;//ataque("u");
 	          //limpiarBuffer(cuadrantes); 
 		}
 
-E: A C STOP { printf("Ataque");//ataque("lvizq"); 
+E: A C STOP { printf("Ataque"); return;//ataque("lvizq"); 
 	      //limpiarBuffer(cuadrantes); 
 	    }
 
-E: C A B D STOP { printf("Ataque");//ataque("escalon"); 
+E: C A B D STOP { printf("Ataque"); return;//ataque("escalon"); 
 		  //limpiarBuffer(cuadrantes); 
 	        }
 
-E: A C D STOP { printf("Ataque");//ataque("l"); 
+E: A C D STOP { printf("Ataque"); return;//ataque("l"); 
 		//limpiarBuffer(cuadrantes); 
               }
 
-E: A B D STOP { printf("Ataque");//ataque("linversa"); 
+E: A B D STOP { printf("Ataque"); return;//ataque("linversa"); 
 		//limpiarBuffer(cuadrantes); 
 	      }
 
-E: B D STOP { printf("Ataque");//ataque("lvder"); 
+E: B D STOP { printf("Ataque"); return;//ataque("lvder"); 
 	      //limpiarBuffer(cuadrantes); 
-	    }
+	    }*/
 
 A: a A
   | a
@@ -98,26 +98,30 @@ D: d D
 int yylex(){
   char chaR;
 
-	int i=0;
-	
-	for(i=0; i < 20; i++)
+	int i=0;	
+
+	for(i=0; cuadrantes[i];)
 	{
 		chaR=cuadrantes[i];
 		if(chaR == 'A')
 		{
 			return a;
+			i++;
 		} 
 		else if(chaR == 'B')
 		{
 			return b;
+			i++;
 		} 
 		else if(chaR == 'C')
 		{
 			return c;
+			i++;
 		}
 		else if(chaR == 'D')
 		{
 			return d;
+			i++;
 		}
 	}
 
@@ -273,35 +277,35 @@ int main(void)
 			if (pos[0] < 320 && pos[1] < 240)
 			{
 				cuadrante = 'A';
+				t++;
 				cvRectangle(frame, cvPoint(0, 0), cvPoint(320, 240), CV_RGB(0, 255, 0), -1, 8, 0);
 			}
 
 			if (pos[0] < 320 && pos [1] >= 240)
 			{
 				cuadrante = 'C';
+				t++;
 				cvRectangle(frame, cvPoint(0, 240), cvPoint(320, 480), CV_RGB(0, 255, 0), -1, 8, 0);
 			}
 
 			if (pos[0] >= 320 && pos[1] < 240)
 			{
 				cuadrante = 'B';
+				t++;
 				cvRectangle(frame, cvPoint(320, 0), cvPoint(640, 240), CV_RGB(0, 255, 0), -1, 8, 0);
 			}
 
 			if (pos[0] >= 320 && pos[1] >= 240)
 			{
 				cuadrante = 'D';
+				t++;
 				cvRectangle(frame, cvPoint(320, 240), cvPoint(640, 480), CV_RGB(0, 255, 0), -1, 8, 0);
 			}
 
 			agregarBuffer(cuadrante, cuadrantes); //Agrega el caracter al buffer para su lectura.
 			imprimirBuffer(cuadrantes); //Imprime los cuadrantes que se han ingresado hasta este momento.
-			t++;
-			if (t == 20)
-			{
-				yyparse();
-				limpiarBuffer(cuadrantes);
-			}
+			
+			yyparse();
 		}
 
 		//Muestra el siguiente cuadro
