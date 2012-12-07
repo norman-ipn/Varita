@@ -17,22 +17,28 @@ char cuadrantes[20];
 %%
      
 A+B+D+C+A+ {
-                     printf( "Circle\n", yytext); limpiarBuffer(cuadrantes);
+                     ataque("circulo");
+		     limpiarBuffer(cuadrantes);
            }
 B+A+C+D+ {
-		printf("Media Luna\n", yytext); limpiarBuffer(cuadrantes);
+		     ataque("md");
+		     limpiarBuffer(cuadrantes);
 	 }
 A+B+D+C+ {
-		 printf("Media Luna invertida\n", yytext); limpiarBuffer(cuadrantes);
+		     ataque("mdi"); 
+		     limpiarBuffer(cuadrantes);
       	 }
 C+D+B+ { 
-		printf("L reflejada horizontalmente\n", yytext); limpiarBuffer(cuadrantes);
+		     ataque("lrh"); 
+		     limpiarBuffer(cuadrantes);
 	}
 B+A+C+ { 
-		printf("L reflejada verticalmente\n", yytext); limpiarBuffer(cuadrantes);
+		     ataque("lrv");
+                     limpiarBuffer(cuadrantes);
         }
 A+B+ {
-		printf("Línea horizontal\n", yytext); limpiarBuffer(cuadrantes);
+		     ataque("lh");
+                     limpiarBuffer(cuadrantes);
       }
 A+C+D+B+ {
 		printf("U\n", yytext); limpiarBuffer(cuadrantes);
@@ -55,7 +61,76 @@ B+D+ {
 .           
      
 %%
-     
+
+
+void dibujaTexto(char texto[]) {
+	CvFont font;
+	CvPoint pt1;
+	cvInitFont( &font, CV_FONT_VECTOR0, 0.5, 0.5, 0, 2.0, CV_AA);
+
+	pt1.x = 150;
+	pt1.y = 150;
+
+	if(!(strcmp(texto, "u"))){
+		cvPutText(frame, "Ataque U", pt1, &font,CV_RGB(99,170,251) );
+	}
+
+	if(!(strcmp(texto, "circulo"))){
+		cvPutText(frame, "Ataque circulo", pt1, &font,CV_RGB(99,170,251) );
+	}
+
+	if(!(strcmp(texto, "escalon"))){
+		cvPutText(frame, "Ataque Escalon", pt1, &font,CV_RGB(99,170,251) );
+	}
+
+	if(!(strcmp(texto, "ml"))){
+		cvPutText(frame, "Ataque media luna", pt1, &font,CV_RGB(99,170,251) );
+	}
+
+	if(!(strcmp(texto, "mli"))){
+		cvPutText(frame, "Ataque media luna invertida", pt1, &font,CV_RGB(99,170,251) );
+	}
+
+	if(!(strcmp(texto, "lrh"))){
+		cvPutText(frame, "Ataque L reflejada horizontal", pt1, &font,CV_RGB(99,170,251) );
+	}
+
+	if(!(strcmp(texto, "lrv"))){
+		cvPutText(frame, "Ataque L reflejada vertical", pt1, &font,CV_RGB(99,170,251) );
+	}
+
+	if(!(strcmp(texto, "lh"))){
+		cvPutText(frame, "Ataque linea horizontal", pt1, &font,CV_RGB(99,170,251) );
+	}
+
+	if(!(strcmp(texto, "lvizq"))){
+		cvPutText(frame, "Ataque linea vertical izquierda", pt1, &font,CV_RGB(99,170,251) );
+	}
+
+	if(!(strcmp(texto, "lvder"))){
+		cvPutText(frame, "Ataque linea vertical derecha", pt1, &font,CV_RGB(99,170,251) );
+	}
+
+	if(!(strcmp(texto, "l"))){
+		cvPutText(frame, "Ataque L", pt1, &font,CV_RGB(99,170,251) );
+	}	
+
+	if(!(strcmp(texto, "linversa"))){
+		cvPutText(frame, "Ataque L inversa", pt1, &font,CV_RGB(99,170,251) );
+	}
+}
+
+void ataque(char texto[]){
+/*int count=0;
+
+	while(count<10000){
+       		dibujaTexto(texto);
+       		count=count++;
+	}*/
+printf("Ataque");
+}
+
+
 int main( int argc, char **argv )
 {
      
