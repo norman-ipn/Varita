@@ -62,6 +62,31 @@ D: d D
 %%
 
 //FUNCTION DEFINITIONS
+int yylex(){
+  char chaR;
+	while(1){
+	scanf("%c",&chaR);
+	yylval.sym = chaR;
+	
+	if(chaR == 'A'){
+	return a;
+	}
+	else if(chaR == 'B'){
+	return b;
+	}
+	else if(chaR == 'C'){
+	return c;
+	}
+	else if(chaR == 'D'){
+	return d;
+	}
+	else if(chaR == ';'){
+	return STOP;
+	}
+
+	}
+}
+
 int main()
 {
   yyparse();
