@@ -24,9 +24,9 @@ La forma para realizar este proyecto es la siguiente:
 Primeramente se deberán instalar tanto las librerías OpenCV como PSMoveAPI 
 (Las instrucciones para instalar OpenCV  se encuentran en el archivo OpenCV.odt y las instrucciones para PSMoveApi en el archivo PSMoveAPI.odt).
 
-Posteriormente se deberá mostrar una ventana y con ayuda de un ciclo infinito mostraremos las capturas de la cámara web. Justo en este proceso deberemos hacer uso de la librería PSMoveAPI para poder mostrar un color predefinido y así facilitar la detección de la "varita".
+Posteriormente se mostrará una ventana y con ayuda de un ciclo infinito mostraremos las capturas de la cámara web. Justo en este proceso deberemos hacer uso de la librería PSMoveAPI para poder mostrar un color predefinido y así facilitar la detección de la "varita".
 
-Como siguiente punto, deberemos pasar diversos filtros. Obviamente debemos capturar un cuadro de nuestra cámara. El primer filtro o "paso" a realizar es la transformación de un espacio RGB (Red, Green, Blue) a HSV (Hue, Saturation, Value) que nos facilita la detección de un color específico. Como segundo filtro deberemos usar un by-pass y sólo permitir un rango de valores para refinar nuestra detección. Posteriormente analizamos la imagen con el algoritmo de Hough para detección de círculos que ya se incluye en OpenCV.
+Como siguiente punto, deberemos pasar por diversos filtros. Obviamente debemos capturar un cuadro de nuestra cámara. El primer filtro o "paso" a realizar es la transformación de un espacio RGB (Red, Green, Blue) a HSV (Hue, Saturation, Value) que nos facilita la detección de un color específico. Como segundo filtro deberemos usar un by-pass y sólo permitir un rango de valores para refinar nuestra detección. Posteriormente analizamos la imagen con el algoritmo de Hough para detección de círculos que ya se incluye en OpenCV.
 
 Una vez que tenemos la posición de nuestra varita procedemos a limitar los rangos de área de los cuatro cuadrantes, donde usamos una comparación de posición para indicar si se encuentra en el cuadrante A, B, C o D. Posteriormente pasamos a almacenarlos en una cadena para ser procesada por Bison.
 
