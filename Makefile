@@ -13,4 +13,4 @@ buffer.o: buffer.c
 	gcc -c buffer.c
 
 clean:
-	rm varita buffer.o
+	rm varita buffer.o gramaticasVarita.tab.c

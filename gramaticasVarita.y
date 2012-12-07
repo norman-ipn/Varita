@@ -8,6 +8,8 @@
 
 //El arreglo donde se almacenarán los cuadrantes por donde se ha pasado.
 char cuadrantes[20];
+int t = 0;
+IplImage *frame;
 int yylex(); 
 int yyerror(const char *p) {  } // Aqui se van a registrar errores, pero no se harán acciones.
 %}
@@ -33,52 +35,53 @@ int yyerror(const char *p) {  } // Aqui se van a registrar errores, pero no se h
 run: 
   | run E 
   | run error
-E: A B D C A STOP {  ataque("circulo"); 
-	             limpiaBuffer(cuadrantes);
+E: A B D C A STOP {  
+			printf("Ataque");//ataque("circulo"); 
+	             	//limpiarBuffer(cuadrantes);
 	          }
 
-E: B A C D STOP   { ataque("md"); 
-		    limpiaBuffer(cuadrantes); 
+E: B A C D STOP   { printf("Ataque");//ataque("md"); 
+		    //limpiarBuffer(cuadrantes); 
 		  }
 
-E: A B D C STOP   { ataque("mdi"); 
-		    limpiaBuffer(cuadrantes);
+E: A B D C STOP   { printf("Ataque");//ataque("mdi"); 
+		    //limpiarBuffer(cuadrantes);
 		  }
 
-E: C D B STOP { ataque("lrh"); 
-		limpiaBuffer(cuadrantes); 
+E: C D B STOP { printf("Ataque");//ataque("lrh"); 
+		//limpiarBuffer(cuadrantes); 
 	      }
 
-E: B A C STOP { ataque("lrv");  
-		limpiaBuffer(cuadrantes); 
+E: B A C STOP { printf("Ataque");//ataque("lrv");  
+		//limpiarBuffer(cuadrantes); 
 	      }
 
-E: A B STOP { ataque("lh"); 
-	      limpiaBuffer(cuadrantes);
+E: A B STOP { printf("Ataque");//ataque("lh"); 
+	      //limpiarBuffer(cuadrantes);
             }
 
-E: A C D B STOP { ataque("u");
-	          limpiaBuffer(cuadrantes); 
+E: A C D B STOP { printf("Ataque");//ataque("u");
+	          //limpiarBuffer(cuadrantes); 
 		}
 
-E: A C STOP { ataque("lvizq")); 
-	      limpiaBuffer(cuadrantes); 
+E: A C STOP { printf("Ataque");//ataque("lvizq"); 
+	      //limpiarBuffer(cuadrantes); 
 	    }
 
-E: C A B D STOP { ataque("escalon"); 
-		  limpiaBuffer(cuadrantes); 
+E: C A B D STOP { printf("Ataque");//ataque("escalon"); 
+		  //limpiarBuffer(cuadrantes); 
 	        }
 
-E: A C D STOP { ataque("l"); 
-		limpiaBuffer(cuadrantes); 
+E: A C D STOP { printf("Ataque");//ataque("l"); 
+		//limpiarBuffer(cuadrantes); 
               }
 
-E: A B D STOP { ataque("linversa"); 
-		limpiaBuffer(cuadrantes); 
+E: A B D STOP { printf("Ataque");//ataque("linversa"); 
+		//limpiarBuffer(cuadrantes); 
 	      }
 
-E: B D STOP { ataque("lvder"); 
-	      limpiaBuffer(cuadrantes); 
+E: B D STOP { printf("Ataque");//ataque("lvder"); 
+	      //limpiarBuffer(cuadrantes); 
 	    }
 
 A: a A
@@ -96,27 +99,29 @@ int yylex(){
   char chaR;
 
 	int i=0;
-
-	for(i=0;cuadrantes[i]!= '\0' ;i++)
+	
+	for(i=0; i < 20; i++)
 	{
 		chaR=cuadrantes[i];
 		if(chaR == 'A')
 		{
 			return a;
-		} else if(chaR == 'B')
-			{
+		} 
+		else if(chaR == 'B')
+		{
 			return b;
-			} else if(chaR == 'C')
-				{
-				return c;
-				}else if(chaR == 'D')
-					{
-					return d;
-					}else if(chaR == ';')
-						{
-						return STOP;
-						}
+		} 
+		else if(chaR == 'C')
+		{
+			return c;
+		}
+		else if(chaR == 'D')
+		{
+			return d;
+		}
 	}
+
+	return STOP;
 }
 
 
@@ -128,62 +133,63 @@ void dibujaTexto(char texto[]) {
 	pt1.x = 150;
 	pt1.y = 150;
 
-	if(!(strcmp(texto, "u"){
+	if(!(strcmp(texto, "u"))){
 		cvPutText(frame, "Ataque U", pt1, &font,CV_RGB(99,170,251) );
 	}
 
-	if(!(strcmp(texto, "circulo"){
+	if(!(strcmp(texto, "circulo"))){
 		cvPutText(frame, "Ataque circulo", pt1, &font,CV_RGB(99,170,251) );
 	}
 
-	if(!(strcmp(texto, "escalon"){
+	if(!(strcmp(texto, "escalon"))){
 		cvPutText(frame, "Ataque Escalon", pt1, &font,CV_RGB(99,170,251) );
 	}
 
-	if(!(strcmp(texto, "ml"){
+	if(!(strcmp(texto, "ml"))){
 		cvPutText(frame, "Ataque media luna", pt1, &font,CV_RGB(99,170,251) );
 	}
 
-	if(!(strcmp(texto, "mli"){
-		cvPutText(frame, "Ataque media luna invertida", pt1, &font,CV_RGB(99,170,251) );a
+	if(!(strcmp(texto, "mli"))){
+		cvPutText(frame, "Ataque media luna invertida", pt1, &font,CV_RGB(99,170,251) );
 	}
 
-	if(!(strcmp(texto, "lrh"){
+	if(!(strcmp(texto, "lrh"))){
 		cvPutText(frame, "Ataque L reflejada horizontal", pt1, &font,CV_RGB(99,170,251) );
 	}
 
-	if(!(strcmp(texto, "lrv"){
+	if(!(strcmp(texto, "lrv"))){
 		cvPutText(frame, "Ataque L reflejada vertical", pt1, &font,CV_RGB(99,170,251) );
 	}
 
-	if(!(strcmp(texto, "lh"){
+	if(!(strcmp(texto, "lh"))){
 		cvPutText(frame, "Ataque linea horizontal", pt1, &font,CV_RGB(99,170,251) );
 	}
 
-	if(!(strcmp(texto, "lvizq"){
+	if(!(strcmp(texto, "lvizq"))){
 		cvPutText(frame, "Ataque linea vertical izquierda", pt1, &font,CV_RGB(99,170,251) );
 	}
 
-	if(!(strcmp(texto, "lvder"){
+	if(!(strcmp(texto, "lvder"))){
 		cvPutText(frame, "Ataque linea vertical derecha", pt1, &font,CV_RGB(99,170,251) );
 	}
 
-	if(!(strcmp(texto, "l"){
+	if(!(strcmp(texto, "l"))){
 		cvPutText(frame, "Ataque L", pt1, &font,CV_RGB(99,170,251) );
 	}	
 
-	if(!(strcmp(texto, "linversa"){
+	if(!(strcmp(texto, "linversa"))){
 		cvPutText(frame, "Ataque L inversa", pt1, &font,CV_RGB(99,170,251) );
 	}
 }
 
-void ataque(texto []){
-int count=0;
+void ataque(char texto[]){
+/*int count=0;
 
 	while(count<10000){
        		dibujaTexto(texto);
        		count=count++;
-	}
+	}*/
+printf("Ataque");
 }
 
 int main(void)
@@ -216,8 +222,8 @@ int main(void)
 	cvNamedWindow("Juego Varita", CV_WINDOW_AUTOSIZE);
 
 	//Para poder detectar el color verde del PlayStation Move
-	CvScalar hsv_min = cvScalar(150, 10, 250, 0);
-	CvScalar hsv_max = cvScalar(155, 20, 256, 0);
+	CvScalar hsv_min = cvScalar(151, 15, 250, 0);
+	CvScalar hsv_max = cvScalar(153, 17, 256, 0);
 	IplImage *hsv_frame = cvCreateImage(size, IPL_DEPTH_8U, 3);
 	IplImage *thresholded = cvCreateImage(size, IPL_DEPTH_8U, 1);
 	
@@ -232,7 +238,7 @@ int main(void)
 		}
 
 		//Obtiene el siguiente cuadro
-		IplImage *frame = cvQueryFrame(camara);
+		frame = cvQueryFrame(camara);
 		if(!frame)
 		{
 			printf("Fallò la captura del cuadro\n");
@@ -290,6 +296,12 @@ int main(void)
 
 			agregarBuffer(cuadrante, cuadrantes); //Agrega el caracter al buffer para su lectura.
 			imprimirBuffer(cuadrantes); //Imprime los cuadrantes que se han ingresado hasta este momento.
+			t++;
+			if (t == 20)
+			{
+				yyparse();
+				limpiarBuffer(cuadrantes);
+			}
 		}
 
 		//Muestra el siguiente cuadro
