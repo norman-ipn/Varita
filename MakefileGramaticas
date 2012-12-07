@@ -3,8 +3,10 @@ run: a.out
 
 a.out: gramaticasVarita.tab.c lex.yy.c
 	gcc gramaticasVarita.tab.c lex.yy.c
+
 gramaticasVarita.tab.c : gramaticasVarita.y 
 	bison -d gramaticasVarita.y
+
 lex.yy.c: flexVarita.l
 	flex flexVarita.l
 
