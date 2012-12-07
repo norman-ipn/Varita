@@ -108,10 +108,9 @@ int main(void)
 				cvRectangle(frame, cvPoint(320, 240), cvPoint(640, 480), CV_RGB(0, 255, 0), -1, 8, 0);
 			}
 
-			agregarBuffer(cuadrante); //Agrega el caracter al buffer para su lectura.
+			agregarBuffer(cuadrante, cuadrantes); //Agrega el caracter al buffer para su lectura.
+			imprimirBuffer(cuadrantes); //Imprime los cuadrantes que se han ingresado hasta este momento.
 		}
-
-		imprimirBuffer(cuadrantes); //Imprime los cuadrantes que se han ingresado hasta este momento.
 
 		//Muestra el siguiente cuadro
 		cvShowImage("Juego Varita", frame);
