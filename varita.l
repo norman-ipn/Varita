@@ -41,22 +41,28 @@ A+B+ {
                      limpiarBuffer(cuadrantes);
       }
 A+C+D+B+ {
-		printf("U\n", yytext); limpiarBuffer(cuadrantes);
+		ataque("u");
+	        limpiarBuffer(cuadrantes);
 	  }
 A+C+ {
-		printf("Linea vertical (Lado izq)\n", yytext); limpiarBuffer(cuadrantes);
+		ataque("lvizq"); 
+		limpiarBuffer(cuadrantes);
      }
 C+A+B+D+ {
-		printf("Escalón\n", yytext); limpiarBuffer(cuadrantes);
+		ataque("escalon"); 
+		limpiarBuffer(cuadrantes);
 	  }
 A+C+D+ {
-		printf ("L (normal)\n", yytext); limpiarBuffer(cuadrantes);
+		ataque("l");
+		limpiarBuffer(cuadrantes);
 	}
 A+B+D+ {
-		printf ("L inversa\n", yytext); limpiarBuffer(cuadrantes);
+		ataque("linversa");
+		limpiarBuffer(cuadrantes);
 	}
 B+D+ {
-		printf("Línea vertical (lado derecho)\n", yytext); limpiarBuffer(cuadrantes);
+		ataque("lvder");
+		limpiarBuffer(cuadrantes);
 	}
 .           
      
