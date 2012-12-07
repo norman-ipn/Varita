@@ -9,7 +9,7 @@
 //El arreglo donde se almacenarán los cuadrantes por donde se ha pasado.
 char cuadrantes[20];
 int yylex(); 
-int yyerror(const char *p) { printf("Error"); }
+int yyerror(const char *p) {  } // Aqui se van a registrar errores, pero no se harán acciones.
 %}
 
 //SYMBOL SEMANTIC VALUES
@@ -33,29 +33,53 @@ int yyerror(const char *p) { printf("Error"); }
 run: 
   | run E 
   | run error
-E: A B D C A STOP { printf("Circulo"); }
+E: A B D C A STOP {  printf("Circulo"); 
+	             limpiaBuffer(cuadrantes);
+	          }
 
-E: B A C D STOP   { printf("Media Luna"); }
+E: B A C D STOP   { printf("Media Luna"); 
+		    limpiaBuffer(cuadrantes); 
+		  }
 
-E: A B D C STOP   { printf("Media Luna invertida"); }
+E: A B D C STOP   { printf("Media Luna invertida"); 
+		    limpiaBuffer(cuadrantes);
+		  }
 
-E: C D B STOP { printf("L reflejada horizontalmente"); }
+E: C D B STOP { printf("L reflejada horizontalmente"); 
+		limpiaBuffer(cuadrantes); 
+	      }
 
-E: B A C STOP { printf("L reflejada verticalmente"); }
+E: B A C STOP { printf("L reflejada verticalmente");  
+		limpiaBuffer(cuadrantes); 
+	      }
 
-E: A B STOP { printf("Línea horizontal"); }
+E: A B STOP { printf("Línea horizontal"); 
+	      limpiaBuffer(cuadrantes);
+            }
 
-E: A C D B STOP { printf("U"); }
+E: A C D B STOP { printf("U");
+	          limpiaBuffer(cuadrantes); 
+		}
 
-E: A C STOP { printf("Linea vertical (Lado izq)"); }
+E: A C STOP { printf("Linea vertical (Lado izq)"); 
+	      limpiaBuffer(cuadrantes); 
+	    }
 
-E: C A B D STOP { printf("Escalón"); }
+E: C A B D STOP { printf("Escalón"); 
+		  limpiaBuffer(cuadrantes); 
+	        }
 
-E: A C D STOP { printf ("L (normal)"); }
+E: A C D STOP { printf ("L (normal)"); 
+		limpiaBuffer(cuadrantes); 
+              }
 
-E: A B D STOP { printf ("L inversa");}
+E: A B D STOP { printf ("L inversa"); 
+		limpiaBuffer(cuadrantes); 
+	      }
 
-E: B D STOP { printf("Línea vertial (lado derecho"); }
+E: B D STOP { printf("Línea vertial (lado derecho"); 
+	      limpiaBuffer(cuadrantes); 
+	    }
 
 A: a A
   | a
@@ -220,3 +244,4 @@ int main(void)
 
 	return 0;
 }
+
